@@ -1,0 +1,420 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+// Deklarasi variabel global
+char pilihan[2][10]= {"Minuman" ,"Makanan"};
+char kopi[10][20] = {"Sumo       ", "Cappucino  ", "Hazelnut   ", "Oreo Cheese", "Boba Cafe  "};
+char makanan[10][20] = {"Pisang Goreng ", "Kentang Goreng", "Roti Bakar    ", "Chicken Wings ","Spaghetti     "};
+int harga_L [10] = {15000, 20000, 25000, 18000, 17000};
+int harga_S [10] = {7000, 12000, 15000, 9000, 8000};
+int price [10] = {10000, 15000, 12000, 15000,15000};
+char ulang[2];
+char ukuran[2];
+char menuc[10];
+int menu,jumlah,dibayar,kembalian,tunai,i,total,utama;
+
+// Deklarasi Procedure
+void minuman();
+void makan();
+void bayaran();
+void awal();
+
+int main(){
+
+	utama://--Menu Utama--
+    system("cls");
+    printf("\n");
+    printf("\t ~SELAMAT DATANG DI KEDAI HARUM MANIS~\t\n\n");
+    for (i= 0; i<2; i++) 
+	{
+    printf("\t\t=================\t\n");
+    printf("\t\t(%d) | %s\n\t", i+1, pilihan[i]);
+    printf("\t=================\t\n");
+    }
+	printf("\n\n");
+   	do {
+   	    printf("Mau Pesan Minuman atau Makanan : ");
+   	    fgets(menuc, sizeof menuc, stdin);
+   	    menu = atoi(menuc);
+   	}while(strlen(menuc) == 1);
+   	
+    
+    
+	switch(menu){
+		case 1:
+			system("cls");
+			//menampilkan daftar aneka minuman
+			printf("\t             ~ANEKA MINUMAN~\t\n");
+			printf("\t========================================\n");
+			printf("\t   Daftar Minuman | Ukuran L | Ukuran S\n");
+			for (i= 0; i < 5; i++ ) 
+			{
+			printf("\t==========================================\n");
+        	printf("\t(%d)| %s   Rp. %d | Rp. %d\n",i+1, kopi[i], harga_L[i], harga_S[i]);
+        	}
+			printf("\n");
+			menu_minuman://--menu minuman
+			printf("\n");
+			
+			do {
+   	    		printf("Pilih Minuman : ");
+   	    		fgets(menuc, sizeof menuc, stdin);
+   	    		menu = atoi(menuc);
+   			}while(strlen(menuc) == 1);
+			
+			switch(menu){
+				case 1:
+					printf("\t\t--SUMO--\n");
+					printf("==========================================\n");
+					minuman();
+					
+					//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+					if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+						//kembali ke menu minuman
+						goto menu_minuman;
+					}
+					else{
+		            printf("\n");
+		            	printf("---------------------\n");
+						printf("Total\t  = Rp.%d\n", total);
+					}
+					bayaran();
+					awal ();
+					if(menu == 0) {
+		            	//kembali ke--menu utama--
+		            	total = 0;
+		                goto utama;
+		                return 0;
+					break;
+				} 
+						
+					
+				case 2:
+		        	printf("\t\t--CAPPUCINO--\n");
+					printf("==========================================\n");
+					minuman();
+					
+					//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+					if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+						//kembali ke menu minuman
+						goto menu_minuman;
+					}
+					else{
+		            printf("\n");
+		            	printf("---------------------\n");
+						printf("Total\t  = Rp.%d\n", total);
+					}
+					bayaran();
+					awal ();
+					if(menu == 0) {
+		            	//kembali ke--menu utama--
+		            	total = 0;
+		                goto utama;
+					break;
+				}
+					
+	        	case 3:
+		        	printf("\t\t--HAZELNUT--\n");
+					printf("==========================================\n");
+					minuman();
+					
+					//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+					if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+						//kembali ke menu minuman
+						goto menu_minuman;
+					}
+					else{
+		            printf("\n");
+		            	printf("---------------------\n");
+						printf("Total\t  = Rp.%d\n", total);
+					}
+					bayaran();
+					awal ();
+					if(menu == 0) {
+		            	//kembali ke--menu utama--
+		            	total = 0;
+		                goto utama;
+					break;
+				}
+	            
+		        case 4:
+		        	printf("\t\t--OREO CHESEE--\n");
+					minuman();
+					
+					//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+					if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+						//kembali ke menu minuman
+						goto menu_minuman;
+					}
+					else{
+		            printf("\n");
+		            	printf("---------------------\n");
+						printf("Total\t  = Rp.%d\n", total);
+					}
+					bayaran();
+					awal ();
+					if(menu == 0) {
+		            	//kembali ke--menu utama--
+		            	total = 0;
+		                goto utama;
+					break;
+				}
+					
+		        case 5:
+		        	printf("\t\t--BOBA CAFE--\n");
+					printf("==========================================\n");
+					minuman();
+					
+					//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+					if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+						//kembali ke menu minuman
+						goto menu_minuman;
+					}
+					else{
+		            printf("\n");
+		            	printf("---------------------\n");
+						printf("Total\t  = Rp.%d\n", total);
+					}
+					bayaran();
+					awal ();
+					if(menu == 0) {
+		            	//kembali ke--menu utama--
+		            	total = 0;
+		                goto utama;
+					break;
+				}
+					default: //kalau angka tidak sesuai dengan case yang ada
+					system("cls");
+					printf("kode menu yang anda masukkan salah\n");
+					printf("\n\n");
+		        	printf("Tekan 0 untuk memesan lagi : ");
+		        	scanf("%d", &menu);
+		        	if(menu == 0) {
+		             ;
+		        	}
+					break;
+			}
+
+		case 2:
+    		system("cls");
+    		//menampilkan aneka daftar makanan
+    		printf("\t         ~ANEKA MAKANAN~\t\n");
+        	for (i= 0; i < 5; i++ ) 
+			{
+        	printf("\t=================================\n");
+        	printf("\t(%d)| %s : Rp. %d\n",i+1, makanan[i], price[i]);
+   			}
+	    	printf("\n");
+	    	mkn://menu--makanan--
+	    	printf("\n");
+	    	//ambil input user memilih makanan
+	    	
+	    	do {
+   	    		printf("Pilih makanan : ");
+   	    		fgets(menuc, sizeof menuc, stdin);
+   	    		menu = atoi(menuc);
+   			}while(strlen(menuc) == 1);
+   		
+	    	switch(menu){
+	        case 1:
+	        	printf("\t\t--PISANG GORENG--\n");
+				printf("==========================================\n");
+				makan();
+				
+				//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+				if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+				//kembali ke menu minuman
+					goto mkn;
+				}
+				else{
+		        printf("\n");
+		        printf("---------------------\n");
+				printf("Total\t  = Rp.%d\n", total);
+				}
+				bayaran();
+				awal ();
+				if(menu == 0) {
+		        //kembali ke--menu utama--
+		        total = 0;
+		        goto utama;
+		        break;
+		    }
+				
+			case 2:
+	        	printf("\t\t--KENTANG GORENG--\n");
+				printf("==========================================\n");
+				makan();
+				
+				//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+				if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+				//kembali ke menu minuman
+					goto mkn;
+				}
+				else{
+		        printf("\n");
+		        printf("---------------------\n");
+				printf("Total\t  = Rp.%d\n", total);
+				}
+				bayaran();
+				awal ();
+				if(menu == 0) {
+		        //kembali ke--menu utama--
+		        total = 0;
+		        goto utama;
+		        break;  
+		    }
+				
+			case 3:
+	        	printf("\t\t--ROTI BAKAR--\n");
+				printf("==========================================\n");
+				makan();
+				
+				//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+				if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+				//kembali ke menu makanan
+					goto mkn;
+				}
+				else{
+		        printf("\n");
+		        printf("---------------------\n");
+				printf("Total\t  = Rp.%d\n", total);
+				}
+				bayaran();
+				awal ();
+				if(menu == 0) {
+		        //kembali ke--menu utama--
+		        total = 0;
+		        goto utama;
+		        break;
+		    }
+				
+			case 4:
+	        	printf("\t\t--CHICKHEN WINGS--\n");
+				printf("==========================================\n");
+				makan();
+				
+				//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+				if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+				//kembali ke menu minuman
+					goto mkn;
+				}
+				else{
+		        printf("\n");
+		        printf("---------------------\n");
+				printf("Total\t  = Rp.%d\n", total);
+				}
+				bayaran();
+				awal ();
+				if(menu == 0) {
+		        //kembali ke--menu utama--
+		        total = 0;
+		        goto utama;
+		        break;     
+		    }
+		        
+		    case 5:
+	        	printf("\t\t--SPAGHETTI--\n");
+				printf("==========================================\n");
+				makan();
+				
+				//jika user memilih ya maka menampilkan menu minuman untuk memesan lagi 
+				if(strcmp(ulang,"y") == 0 ||strcmp(ulang,"Y") == 0 ){
+				//kembali ke menu minuman
+					goto mkn;
+				}
+				else{
+		        printf("\n");
+		        printf("---------------------\n");
+				printf("Total\t  = Rp.%d\n", total);
+				}
+				bayaran();
+				awal ();
+				if(menu == 0) {
+		        //kembali ke--menu utama--
+		        total = 0;
+		        goto utama;
+		        break;
+		    }
+				default: //kalau angka tidak sesuai dengan case yang ada
+				system("cls");
+				printf("kode menu yang anda masukkan salah\n");
+				printf("\n\n");
+		        printf("Tekan 0 untuk memesan lagi : ");
+		        scanf("%d", &menu);
+		        if(menu == 0) {
+		        }
+				break;   		   
+				
+			}
+		default: //kalau angka tidak sesuai dengan case yang ada
+		system("cls");
+		printf("kode menu yang anda masukkan salah\n");
+		printf("\n\n");
+		printf("Tekan 0 untuk memesan lagi : ");
+		scanf("%d", &menu);
+		if(menu == 0) {
+		}
+		break;   		   
+		}
+		
+	}
+
+void minuman(){
+	
+	printf("Large / Small          : ");
+	scanf("%s", &ukuran);
+	//mengambil input user jumlah yang dipesan
+	printf("Mau Pesan Berapa gelas : ");
+	scanf("%d", &jumlah);
+	 //mengambil input user antara membayar atau memesan lagi minuman
+					
+	if (strcmp(ukuran,"L")==0 ||strcmp(ukuran,"l")==0 ){
+	//hitung total uang yang harus dibayar oleh user ketika memilih ukuran L
+	total += jumlah * harga_L[menu-1];
+	}
+	else{
+	//hitung total uang yang harus dibayar oleh user ketika memilih ukuran S
+	total += jumlah * harga_S[menu-1];
+	}
+	printf("Mau Pesan lagi ?(y/t)  : ");
+	scanf("%s", &ulang);
+	}
+	
+void makan(){
+	
+	printf("Mau Pesan Berapa porsi : ");
+	scanf("%d", &jumlah);
+	//hitung total uang yang harus dibayar oleh user ketika memilih makanan
+	total += jumlah * price[menu-1];
+	printf("Mau Pesan lagi ?(y/t)  : ");
+	scanf("%s", &ulang);
+}
+	
+void bayaran (){
+	
+	bayar:
+	//meminta input user memasukan uang tunai
+	printf("Tunai\t  = Rp.");
+	scanf("%d", &dibayar);
+	if(dibayar < total) {
+		printf("Maaf Uang Anda Kurang!\n");
+		//kembali meminta input uang tunai
+		goto bayar;	 
+	}
+	//jika uangnya lebih maka tunai - jumlah harga yang dipesan
+	kembalian = dibayar - total;
+	printf("Kembalian = Rp.%d\n\n", kembalian);
+	printf("\tTerima kasih atas pesanan anda\n");
+	printf("\n\t      ~Selamat Menikmati~\n");
+}
+
+void awal (){
+	
+	//meminta input user jika ingiin memsan lagi
+	printf("\n\n");
+	printf("==========================================\n");
+	printf("Tekan 0 untuk memesan lagi : ");
+	scanf("%d", &menu);
+}			
+			
